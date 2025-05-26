@@ -1,16 +1,17 @@
-package com.invest.app.security;
+package com.invest.app.services;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.http.ResponseEntity;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 @Service
 public class IpInfoService {
 
-//    private static final String API_URL = "https://api.ipinfo.info/check?access_key=830732c62437ea";
+    //    private static final String API_URL = "https://api.ipinfo.info/check?access_key=830732c62437ea";
     private static final String API_URL = "https://ipinfo.io/json?token=830732c62437ea";
-//830732c62437ea
+    //830732c62437ea
     public String getPublicIpAddress() {
         RestTemplate restTemplate = new RestTemplate();
 

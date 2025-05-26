@@ -1,5 +1,6 @@
 package com.invest.app.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -36,7 +37,16 @@ public class UserInvestment {
     private String fundSize;
 
     @OneToMany(mappedBy = "investment")
+    @JsonManagedReference(value = "investment-userActiveInvestment")
     private List<UserActiveInvestment> userInvestments;
+
+    @Column(name = "return_percentage")
+    private Double returnPercentage;
+
+    public double getReturnPercentage() {
+        return returnPercentage != null ? returnPercentage : 0.0;
+    }
+
 
     public Long getId() {
         return id;

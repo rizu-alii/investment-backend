@@ -1,5 +1,7 @@
 package com.invest.app.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -23,13 +25,13 @@ public class UsersEntity {
     private boolean enabled = true;
 
     @OneToMany(mappedBy = "usersEntity")
+    @JsonManagedReference(value = "user-userActiveInvestment")
     private List<UserActiveInvestment> userActiveInvestments;
 
     @OneToMany(mappedBy = "usersEntity")
+    @JsonManagedReference(value = "user-transaction")
     private List<Transaction> transactions;
 
-    @OneToMany(mappedBy = "usersEntity")
-    private List<WithdrawalRequest> withdrawalRequests;
 
     // Getters and setters
     public Long getId() {
@@ -82,13 +84,7 @@ public class UsersEntity {
         this.transactions = transactions;
     }
 
-    public List<WithdrawalRequest> getWithdrawalRequests() {
-        return withdrawalRequests;
-    }
 
-    public void setWithdrawalRequests(List<WithdrawalRequest> withdrawalRequests) {
-        this.withdrawalRequests = withdrawalRequests;
-    }
 
     public List<UserActiveInvestment> getUserActiveInvestments() {
         return userActiveInvestments;

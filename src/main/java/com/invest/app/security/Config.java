@@ -132,7 +132,7 @@ public class Config {
 
         // Authorization rules
         http.authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/login", "/api/auth/register","/api/auth/admin/login").permitAll()  // Allow login/register endpoints
+                .requestMatchers("/api/auth/login", "/api/auth/register","/api/auth/admin/login","/api/contact").permitAll()  // Allow login/register endpoints
                 .anyRequest().authenticated() // All other requests require authentication
         );
 
